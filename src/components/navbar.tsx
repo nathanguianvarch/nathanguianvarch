@@ -1,7 +1,16 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Link,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Avatar,
+} from "@nextui-org/react";
 import { motion } from "framer-motion";
 
-export default function Navbar() {
+import { Code } from "lucide-react";
+
+export default function NavbarComponent() {
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -11,8 +20,8 @@ export default function Navbar() {
         delay: 0,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      className="flex items-center h-16 px-16 md:px-16 border-b shadow-sm bg-slate-900"
     >
+<<<<<<< Updated upstream
       <nav className="flex items-center space-x-4">
         <Link href="#">
           <div className="flex items-center space-x-2">
@@ -33,18 +42,35 @@ export default function Navbar() {
         <Link href="#projects">Projects</Link>
         <Link href="#">Contact</Link>
       </nav>
+=======
+      <Navbar isBordered>
+        <NavbarBrand>
+          <Avatar
+            radius="md"
+            size="md"
+            src="https://cgw9vwvsh4bcdqxj.public.blob.vercel-storage.com/profile-cropped.jpg"
+          />
+          <p className="font-bold text-inherit">Nathan Guianvarch</p>
+        </NavbarBrand>
+        <NavbarContent>
+          <NavbarItem>
+            <Link href="#skills">Skills</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="#schools">Schools</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="#experiences">Experiences</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="#projects">Projects</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="#contact">Contact</Link>
+          </NavbarItem>
+        </NavbarContent>
+      </Navbar>
+>>>>>>> Stashed changes
     </motion.header>
   );
 }
-type LinkProps = {
-  href: string;
-  children: React.ReactNode;
-};
-
-const Link = ({ href, children }: LinkProps) => {
-  return (
-    <a href={href} className="hover:bg-slate-800 px-3 py-1 rounded text-lg">
-      {children}
-    </a>
-  );
-};

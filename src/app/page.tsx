@@ -5,7 +5,7 @@ import LandingPage from "@/components/landingPage";
 import Skills from "@/components/skills";
 import Schools from "@/components/schools";
 import Experiences from "@/components/experiences";
-import Socials from "@/components/socials";
+import Socials from "@/components/contact";
 
 export default function Home() {
   return (

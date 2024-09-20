@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+<<<<<<< Updated upstream
 import { ThemeProvider } from "@/components/ui/theme-provider";
+=======
+import { ThemeProvider } from "@/components/theme-provider";
+import { NextUIProvider } from "@nextui-org/react";
+>>>>>>> Stashed changes
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+<<<<<<< Updated upstream
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         <ThemeProvider
@@ -30,5 +36,24 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+=======
+    <>
+      <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+        <head />
+        <body>
+          <NextUIProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </NextUIProvider>
+        </body>
+      </html>
+    </>
+>>>>>>> Stashed changes
   );
 }

@@ -1,23 +1,27 @@
 "use client";
 import { useEffect, useState } from "react";
+<<<<<<< Updated upstream
 import supabase from "@/components/connectionSupabase";
+=======
+>>>>>>> Stashed changes
 import {
   Card,
-  CardContent,
-  CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  CardBody,
+  CardFooter,
+  Divider,
+} from "@nextui-org/react";
+import useSupabase from "@/hooks/useSupabase";
 import Image from "next/image";
-import { Skeleton } from "./ui/skeleton";
 import { motion } from "framer-motion";
-import { Title } from "@/components/ui/title";
+import { Chip } from "@nextui-org/chip";
+import * as Icons from "lucide-react";
 
 interface SkillsTypes {
   id: number;
   created_at: string;
   title: string;
-  icon: string;
+  icon: keyof typeof Icons;
 }
 interface Skills {
   id: number;
@@ -53,36 +57,13 @@ export default function Skills() {
   }, []);
   return (
     <section id="skills" className="p-12">
-      <div>
-        <Title text="My skills" />
-        <div className="flex flex-wrap justify-center gap-4 m-4">
-          {loading && (
-            <Card className="max-w-96">
-              <CardHeader>
-                <CardTitle>
-                  <div className="flex justify-center items-center gap-2">
-                    <Skeleton className="h-8 w-[150px]" />
-                  </div>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col gap-2 w-64">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      className="flex hover:bg-slate-800 px-4 py-2 rounded-lg border flex-wrap gap-2 items-center"
-                      key={i}
-                    >
-                      <div className="flex gap-2">
-                        <Skeleton className="h-[28px] w-[28px] rounded-full" />
-                        <Skeleton className="h-6 w-[150px]" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
-          {skills_types?.map((skill_type) => (
+      <h4 className="text-5xl font-semibold text-center mb-8">Skills</h4>
+      <div className="flex flex-wrap gap-4 m-4 justify-center">
+        {skills_types?.map((skill_type) => {
+          const IconComponent = Icons[skill_type.icon] as React.ComponentType<{
+            size?: number;
+          }>; // Typecasting pour informer TypeScript
+          return (
             <motion.div
               key={skill_type.id}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -93,47 +74,42 @@ export default function Skills() {
                 ease: [0, 0.71, 0.2, 1.01],
               }}
             >
-              <Card className="max-w-96" key={skill_type.id}>
-                <CardHeader>
-                  <CardTitle>
-                    <div className="flex justify-center items-center gap-2">
-                      {skill_type.title}
-                    </div>
-                  </CardTitle>
+              <Card className="h-full" key={skill_type.id}>
+                <CardHeader className="flex gap-2">
+                  {IconComponent && <IconComponent size={24} />}
+                  <p className="text-2xl text-center font-semibold">
+                    {skill_type.title}
+                  </p>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex flex-col gap-2 w-64">
+                <Divider />
+                <CardBody>
+                  <div className="flex flex-wrap gap-2 w-64 justify-items-stretch">
                     {skills
                       .filter((skill) => skill.type === skill_type.id)
                       .map((skill) => (
-                        <div
-                          key={skill.id}
-                          className="flex hover:bg-slate-800 px-4 py-2 rounded-lg border flex-wrap gap-2 items-center"
-                        >
-                          {/*<Image
-                          src={skill.icon ? skill.icon : "/icons/unknown.svg"}
-                          width={28}
-                          height={28}
-                          alt="aa"
-                    />*/}
-                          {skill.icon && (
-                            <Image
-                              src={skill.icon}
-                              width={28}
-                              height={28}
-                              alt="Icon"
-                              className="fill-white"
-                            />
-                          )}
-                          <p>{skill.title}</p>
+                        <div key={skill.id} className="inline-block">
+                          <Chip
+                            size="lg"
+                            startContent={
+                              <Image
+                                src={skill.icon}
+                                width={22}
+                                height={22}
+                                alt="Icon"
+                                className="fill-white"
+                              />
+                            }
+                          >
+                            {skill.title}
+                          </Chip>
                         </div>
                       ))}
                   </div>
-                </CardContent>
+                </CardBody>
               </Card>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );

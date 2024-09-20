@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import supabase from "@/components/connectionSupabase";
 import { format } from "date-fns";
-import { fr } from "date-fns/locale";
 import {
   Card,
-  CardContent,
-  CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  CardBody,
+  CardFooter,
+  Tooltip,
+  Divider,
+} from "@nextui-org/react";
 import Image from "next/image";
 import { CalendarDays, MapPin } from "lucide-react";
-import { Title } from "@/components/ui/title";
+import { Chip } from "@nextui-org/chip";
 
 interface Experience {
   id: number;
@@ -22,6 +22,7 @@ interface Experience {
   start_date: string;
   end_date: string;
   description: string[];
+  address: string;
 }
 
 export default function Experiences() {
@@ -48,27 +49,26 @@ export default function Experiences() {
 
   return (
     <section id="experiences" className="p-12">
-      <Title text="My experiences" />
-      <div className="flex flex-col items-center gap-4 m-4">
+      <h4 className="text-5xl font-semibold text-center mb-8">Experiences</h4>
+      <div className="flex flex-wrap justify-center items-center gap-4 m-4">
         {experiences.map((experience) => (
-          <Card key={experience.id} className="sm:w-[500px] md:w-[700px]">
+          <Card key={experience.id} className="w-[500px]">
             <CardHeader>
-              <CardTitle>
-                <div className="flex gap-4 items-center">
-                  {experience.logo && (
-                    <Image
-                      src={experience.logo}
-                      alt={experience.name}
-                      width={50}
-                      height={50}
-                      className="h-auto w-auto"
-                    />
-                  )}
-                  <p>{experience.name}</p>
-                </div>
-              </CardTitle>
+              <div className="flex gap-4 items-center">
+                {experience.logo && (
+                  <Image
+                    src={experience.logo}
+                    alt={experience.name}
+                    width={50} // largeur de l'image
+                    height={50} // hauteur de l'image
+                    style={{ maxHeight: "200px", objectFit: "cover" }} // définir max-height
+                  />
+                )}
+                <h4 className="font-semibold text-2xl	">{experience.name}</h4>
+              </div>
             </CardHeader>
-            <CardContent>
+            <Divider />
+            <CardBody>
               <ul className="list-disc mx-4">
                 {experience.description.map((desc, index) => (
                   <li key={index} className="text-gray-400">
@@ -76,21 +76,29 @@ export default function Experiences() {
                   </li>
                 ))}
               </ul>
-            </CardContent>
+            </CardBody>
             <CardFooter>
               <div className="flex gap-2">
-                <div className="text-gray-400 bg-white/[.1] px-2 py-1 rounded-lg flex items-center gap-2">
-                  <CalendarDays className="w-5 h-5" />
-                  <p className="text-start">
-                    {formatDate(experience.start_date)}
-                    {experience.start_date !== experience.end_date &&
-                      ` - ${formatDate(experience.end_date)}`}
-                  </p>
-                </div>
-                <div className="text-gray-400 bg-white/[.1] px-2 py-1 rounded-lg flex items-center gap-2">
-                  <MapPin className="w-5 h-5" />
-                  <p>{experience.location}</p>
-                </div>
+                <Chip
+                  radius="sm"
+                  size="lg"
+                  className="text-gray-400"
+                  startContent={<CalendarDays />}
+                >
+                  {formatDate(experience.start_date)}
+                  {experience.start_date !== experience.end_date &&
+                    ` - ${formatDate(experience.end_date)}`}
+                </Chip>
+                <Tooltip content={experience.address}>
+                  <Chip
+                    radius="sm"
+                    size="lg"
+                    className="text-gray-400"
+                    startContent={<MapPin />}
+                  >
+                    {experience.location}
+                  </Chip>
+                </Tooltip>
               </div>
             </CardFooter>
           </Card>

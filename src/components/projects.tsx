@@ -1,12 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-<<<<<<< Updated upstream
 import supabase from "@/components/connectionSupabase";
 import { format } from "date-fns";
-=======
-import useSupabase from "@/hooks/useSupabase";
-import { format, set } from "date-fns";
->>>>>>> Stashed changes
 import { CalendarDays } from "lucide-react";
 import {
   Card,
@@ -51,12 +46,8 @@ export default function Projects() {
       setLoading(false);
     }
     fetchData();
-<<<<<<< Updated upstream
-  }, []);
-=======
   }, [supabase]);
   console.log(projectSkills);
->>>>>>> Stashed changes
   return (
     <section id="projects" className="p-12">
       <h4 className="text-5xl font-semibold text-center mb-8">Projects</h4>

@@ -1,9 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-<<<<<<< Updated upstream
 import supabase from "@/components/connectionSupabase";
-=======
->>>>>>> Stashed changes
 import {
   Card,
   CardHeader,

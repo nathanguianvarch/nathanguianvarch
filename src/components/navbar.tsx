@@ -21,28 +21,6 @@ export default function NavbarComponent() {
         ease: [0, 0.71, 0.2, 1.01],
       }}
     >
-<<<<<<< Updated upstream
-      <nav className="flex items-center space-x-4">
-        <Link href="#">
-          <div className="flex items-center space-x-2">
-            <Avatar>
-              <AvatarImage
-                src="https://cgw9vwvsh4bcdqxj.public.blob.vercel-storage.com/profile-cropped.jpg"
-                alt="@nathanguianvarch"
-              />
-              <AvatarFallback>NG</AvatarFallback>
-            </Avatar>
-            <span className="font-semibold">Nathan Guianvarch</span>
-          </div>
-        </Link>
-      </nav>
-      <nav className="ml-auto flex items-center space-x-2 hidden md:block">
-        <Link href="#skills">Skills</Link>
-        <Link href="#experiences">Experiences</Link>
-        <Link href="#projects">Projects</Link>
-        <Link href="#">Contact</Link>
-      </nav>
-=======
       <Navbar isBordered>
         <NavbarBrand>
           <Avatar
@@ -70,7 +48,6 @@ export default function NavbarComponent() {
           </NavbarItem>
         </NavbarContent>
       </Navbar>
->>>>>>> Stashed changes
     </motion.header>
   );
 }

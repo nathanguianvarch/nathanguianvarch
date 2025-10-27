@@ -17,7 +17,7 @@ export default function Socials() {
             <Github className="w-14 h-14" />
           </div>
         </Link>
-        <Link href="mailto:jonathan.m.s.s@gmail.com">
+        <Link href="mailto:nathanguianvarch@gmail.com">
           <div className="w-16 h-16 border rounded-lg flex items-center justify-center">
             <Mail className="w-14 h-14" />
           </div>

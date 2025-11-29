@@ -50,7 +50,7 @@ export default function Schools() {
                     alt={school.name}
                     width={50}
                     height={50}
-                    className="h-auto w-auto"
+                    className="h-auto w-auto rounded-2xl"
                   />
                   {school.name}
                 </div>
@@ -63,14 +63,14 @@ export default function Schools() {
             </CardContent>
             <CardFooter>
               <div className="flex gap-2">
-                <div className="text-gray-400 bg-white/[.1] px-2 py-1 rounded-lg flex items-center gap-2">
+                <div className="text-gray-400 bg-white/10 px-2 py-1 rounded-lg flex items-center gap-2">
                   <CalendarDays className="w-5 h-5" />
                   <p className="text-start">
                     {new Date(school.start_date).getFullYear()} -{" "}
                     {new Date(school.end_date).getFullYear()}{" "}
                   </p>
                 </div>
-                <div className="text-gray-400 bg-white/[.1] px-2 py-1 rounded-lg flex items-center gap-2">
+                <div className="text-gray-400 bg-white/10 px-2 py-1 rounded-lg flex items-center gap-2">
                   <MapPin className="w-5 h-5" />
                   <p>{school.location}</p>
                 </div>

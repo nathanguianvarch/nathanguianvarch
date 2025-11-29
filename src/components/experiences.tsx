@@ -80,7 +80,7 @@ export default function Experiences() {
             </CardContent>
             <CardFooter>
               <div className="flex gap-2">
-                <div className="text-gray-400 bg-white/[.1] px-2 py-1 rounded-lg flex items-center gap-2">
+                <div className="text-gray-400 bg-white/10 px-2 py-1 rounded-lg flex items-center gap-2">
                   <CalendarDays className="w-5 h-5" />
                   <p className="text-start">
                     {formatDate(experience.start_date)}
@@ -88,7 +88,7 @@ export default function Experiences() {
                       ` - ${formatDate(experience.end_date)}`}
                   </p>
                 </div>
-                <div className="text-gray-400 bg-white/[.1] px-2 py-1 rounded-lg flex items-center gap-2">
+                <div className="text-gray-400 bg-white/10 px-2 py-1 rounded-lg flex items-center gap-2">
                   <MapPin className="w-5 h-5" />
                   <p>{experience.location}</p>
                 </div>

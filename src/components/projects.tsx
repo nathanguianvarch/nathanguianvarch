@@ -1,8 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
-import useSupabase from "@/hooks/useSupabase";
-import { format } from "date-fns";
-import { CalendarDays } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -11,10 +7,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import Image from "next/image";
-import { motion } from "framer-motion";
 import { Title } from "@/components/ui/title";
-import { Badge } from "@/components/ui/badge";
+import useSupabase from "@/hooks/useSupabase";
+import { format } from "date-fns";
+import { motion } from "framer-motion";
+import { CalendarDays } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface Project {
   id: number;
@@ -40,6 +39,27 @@ export default function Projects() {
   }, [supabase]);
   return (
     <section id="projects" className="p-12">
+      <div className="grid grid-cols-2 gap-4">
+        <div className="col-span-2 bg-white/10 rounded-3xl p-4 flex flex-col gap-4">
+          <p className="font-bold text-2xl">nathanguianvarch.fr</p>
+          <div>
+            <p className="text-sm text-gray-300">
+              My online portfolio website brings together my skills and
+              professional experiences to provide a comprehensive view of my
+              journey and accomplishments.
+            </p>
+            <Image
+              src="/projects/portfolio.png"
+              alt="nathanguianvarch.fr"
+              className="h-full w-full"
+              fill
+              style={{
+                objectFit: "cover",
+              }}
+            />
+          </div>
+        </div>
+      </div>
       <div>
         <Title text="My projects" />
         <div className="flex flex-wrap justify-center gap-4 m-4">
@@ -94,7 +114,7 @@ export default function Projects() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <div className="text-gray-400 bg-white/[.1] px-2 py-1 rounded-lg flex items-center gap-2">
+                  <div className="text-gray-400 bg-white/10 px-2 py-1 rounded-lg flex items-center gap-2">
                     <CalendarDays className="w-5 h-5" />
                     <span>
                       Published on{" "}

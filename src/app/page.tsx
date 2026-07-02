@@ -1,10 +1,9 @@
 "use client";
-import Projects from "@/components/projects";
-import Navbar from "@/components/navbar";
-import LandingPage from "@/components/landingPage";
-import Skills from "@/components/skills";
-import Schools from "@/components/schools";
 import Experiences from "@/components/experiences";
+import LandingPage from "@/components/landingPage";
+import Navbar from "@/components/navbar";
+import Projects from "@/components/projects";
+import Schools from "@/components/schools";
 import Socials from "@/components/socials";
 
 export default function Home() {
@@ -12,8 +11,8 @@ export default function Home() {
     <main>
       <Navbar />
       <LandingPage />
-      <hr />
-      <Skills />
+      {/* <hr />
+      <Skills /> */}
       <hr />
       <Projects />
       <hr />

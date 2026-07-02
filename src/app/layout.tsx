@@ -15,18 +15,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: any) {
   return (
     <>
-      <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <html lang="en" className="dark scroll-smooth bg-black">
         <head />
-        <body>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </body>
+        <body>{children}</body>
       </html>
     </>
   );
